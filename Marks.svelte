@@ -3,23 +3,12 @@
   export let subjectKey
   export let studentKey
 
-  import {token, marks, showAddMark} from '../stores'
+  import {token, marks, showAddMark, average} from '../stores'
   import {fetchMarks} from '../fetch/fetch'
-  import {months} from '../utils/utils'
+  import {months, calcAverage} from '../utils/utils'
   import { writable } from 'svelte/store'
 
-  let average = writable(0);
-
-  function calcAverage(marks) {
-    let number = marks.length
-    for (let index in marks) {
-      let mark = marks[index]
-      $average += mark.value
-    }
-
-    $average = +(($average / number).toFixed(2))
-    return ''
-  }
+  console.log(average)
 
 </script>
 

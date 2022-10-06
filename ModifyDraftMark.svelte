@@ -1,7 +1,7 @@
 <script>
   import { fetchDraftMarks } from '../fetch/fetch'
   import { updateModifyDraftMark } from '../fetch/update'
-  import {showModifyDraftMark, selectedDraftMark, d, token} from '../stores'
+  import {showModifyDraftMark, showDefinitivateDraftMark, selectedDraftMark, d, token} from '../stores'
 
   import InputSelect from './InputSelect.svelte'
   import InputSelectMark from './InputSelectMark.svelte'
@@ -41,6 +41,12 @@
       </div>
     </div>
     <div id="button">
+      <div id="definitivate" on:click={() => {
+        $showDefinitivateDraftMark = true; 
+        $showModifyDraftMark = false
+      }}>
+        Definitiveaza nota
+      </div>
       <SubmitButton value="Modifică" onClick={async () => {
         await updateModifyDraftMark($token, 
           $selectedDraftMark.key, 
@@ -124,6 +130,14 @@
     color: var(--darkgreen);
     font-size: 1.2em;
     font-family: var(--sans-serif);
+  }
+
+  #definitivate {
+    color: var(--lightgreen);
+    margin: 20px;
+    font-size: 1.2em;
+    font-family: var(--sans-serif);
+    text-decoration: underline;
   }
 
   #button {
