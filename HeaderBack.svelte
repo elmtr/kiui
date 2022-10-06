@@ -1,23 +1,22 @@
 <script>
   import { pop } from "svelte-spa-router"
-
-  function goBack() {
-    pop()
-  }
-
 </script>
 
 <div id="header">
-  <div id="back-button" on:click={goBack}>
+  <div id="back-button" on:click={() => {pop()}}>
     <img src="/img/left.png" alt="">
   </div>
 </div>
+
+<div id="spacing"></div>
 
 <style scoped>
   #header {
     background: var(--white);
     height: 60px;
     width: 100%;
+    position: fixed;
+    top: 0;
   }
 
   #back-button {
@@ -35,5 +34,9 @@
     left: 10px;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+  }
+
+  #spacing {
+    height: 60px;
   }
 </style>

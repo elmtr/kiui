@@ -1,51 +1,40 @@
 <script>
+  import { onMount } from 'svelte'  
+  import {today} from '../stores'
 
-  export let subjects
-  export let gradeKey
-  export let currentSubject
+  export let day
 
-  import {writable} from 'svelte/store'
+  let daysString = ['', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri']
 
-  const nextSubject = writable("");
-  // const currentSubject = writable("")
-  currentSubject.set(Object.keys(subjects[gradeKey])[0])
-  const prevSubject = writable("");
-  
-  let subjectKeys = Object.keys(subjects[gradeKey]).concat(Object.keys(subjects[gradeKey]))
-
-  function loadSubjects() {
-    for (let i = 0; i <= subjectKeys.length - 1; i++) {
-      if (subjectKeys[i] == $currentSubject) {
-        nextSubject.set(subjectKeys[i + 1])
-        break 
-      }
-    }
-
-    for (let i = subjectKeys.length - 1; i >= 1; i--) {
-      if (subjectKeys[i] == $currentSubject) {
-        prevSubject.set(subjectKeys[i - 1])
-        break
-      }
-    }
-  }
+  onMount(() => {
+    if ($today > 5) {
+      day.set(1)
+    } else day.set($today)
+  })
 
 </script>
 
 <div id="container">
   <div id="left" on:click={() => {
-    loadSubjects()
-    currentSubject.set($prevSubject)
+    if ($day === 1) {
+      day.set(5)
+    } else {
+      day.update(value => value - 1)
+    }
   }}>
     <img src="/img/left-lightgreen.png" alt="">
   </div>
 
   <span id="name">
-    {subjects[gradeKey][$currentSubject].name}
+    {daysString[$day]}
   </span>
 
   <div id="right" on:click={() => {
-    loadSubjects()
-    currentSubject.set($nextSubject)
+    if ($day === 5) {
+      day.set(1)
+    } else {
+      day.update(value => value + 1)
+    }
   }}>
     <img src="/img/right-lightgreen.png" alt="">
   </div>
@@ -60,7 +49,6 @@
     border: var(--border);
     margin: auto;
     margin-top: 20px;
-    margin-bottom: 20px;
 
     position: relative;
   }

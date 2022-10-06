@@ -1,23 +1,16 @@
 <script>
-  import { onMount } from "svelte"
   import {link} from 'svelte-spa-router'
   import { writable } from "svelte/store"
-  import {school, now} from '../stores'
+  import {school} from '../stores'
+
+  import {floatToHour} from '../utils/utils'
 
   export let timetable = {}
   export let day
   export let interval
 
-  let progress = writable(70)
 
   let roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII"]
-
-  function floatToHour(number) {
-    let hour = ~~number
-    let minutes = Math.ceil((number % 1) * 100)
-
-    return hour + ":" + minutes
-  }
 
   let period = writable(timetable[day][interval][0])
 </script>
