@@ -3,19 +3,125 @@
   export let subjectKey
   export let studentKey
 
-  import {token, marks} from '../stores'
-  import {link, location} from 'svelte-spa-router'
+  import {token, marks, showAddMark} from '../stores'
   import {fetchMarks} from '../fetch/fetch'
+  import {months} from '../utils/utils'
+  import { writable } from 'svelte/store'
+
+  let average = writable(0);
+
+  function calcAverage(marks) {
+    let number = marks.length
+    for (let index in marks) {
+      let mark = marks[index]
+      $average += mark.value
+    }
+
+    $average = +(($average / number).toFixed(2))
+    return ''
+  }
 
 </script>
 
-<h1>marks</h1>
 {#await fetchMarks($token, subjectKey, studentKey) then data}
-  {#each $marks as mark}
-    <span>
-      {mark.value} - {mark.dateDay}.{mark.dateMonth}
-    </span>
-    <br>
-  {/each}
-  <a href="{$location}/add/mark" use:link> adauga nota</a>
+  <div id="container">
+    <div id="title">
+        <span>Note</span>
+        <div id="add-button" on:click={() => {$showAddMark = true}}>
+          <img src="/img/plus.png" alt="">
+        </div>
+    </div>
+    <div id="content">
+      <l>
+        {calcAverage($marks)}
+        {#each $marks as mark}
+          <li id="element">
+            {mark.value} - {mark.dateDay} {months[mark.dateMonth]}
+          </li>
+        {/each}
+      </l>
+    </div>
+    <div id="average">
+      Media: {$average}
+    </div>
+  </div>
 {/await}
+
+
+<style scoped>
+  #container {
+    width: var(--width);
+
+    margin: auto;
+    margin-top: 15px;
+    
+    color: var(--darkgreen);
+    background: var(--white);
+    
+    border-radius: var(--border-radius);
+    border: var(--border);
+
+    box-sizing: border-box;
+    padding: 10px 30px 0 30px;
+  }
+
+  #title {
+    height: 40px;
+    position: relative;
+  }
+
+  #title span {
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 1.5em;
+    color: var(--darkgreen);
+    
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  #add-button {
+    height: 40px;
+    width: 40px;
+    background: var(--darkgreen);
+    float: right;
+    border-radius: 100%;
+  }
+
+  #add-button img {
+    width: 80%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  #content {
+    width: 100%;
+    
+    box-sizing: border-box;
+    margin-top: 10px;
+
+    color: var(--darkgreen);
+    font-size: 1.3em;
+    font-family: var(--sans-serif);
+  }
+
+  #element {
+    margin-bottom: 15px;
+  }
+
+  #average {
+    width: 100%;
+    font-size: 1.3em;
+    font-family: var(--sans-serif);
+    color: var(--lightgreen);
+
+    box-sizing: border-box;
+    padding-bottom: 15px;
+  }
+
+</style>

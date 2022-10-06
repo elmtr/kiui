@@ -31,16 +31,84 @@
 
 </script>
 
-<span on:click={() => {
-  loadSubjects()
-  currentSubject.set($prevSubject)
-}}>prev</span>
+<div id="container">
+  <div id="left" on:click={() => {
+    loadSubjects()
+    currentSubject.set($prevSubject)
+  }}>
+    <img src="/img/left-lightgreen.png" alt="">
+  </div>
 
-<div>
-  {subjects[gradeKey][$currentSubject].name}
+  <span id="name">
+    {subjects[gradeKey][$currentSubject].name}
+  </span>
+
+  <div id="right" on:click={() => {
+    loadSubjects()
+    currentSubject.set($nextSubject)
+  }}>
+    <img src="/img/right-lightgreen.png" alt="">
+  </div>
 </div>
 
-<span on:click={() => {
-  loadSubjects()
-  currentSubject.set($nextSubject)
-}}>next</span><br>
+<style scoped>
+  #container {
+    width: var(--width);
+    height: 60px;
+    background: var(--darkgreen);
+    border-radius: var(--border-radius);
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    position: relative;
+  }
+
+  #left {
+    float: left;
+    height: 100%;
+    width: 60px;
+    position: relative;
+  }
+
+  #left img {
+    width: 70%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  #right {
+    float: right;
+    height: 100%;
+    width: 60px;
+    position: relative;
+  }
+
+  #right img {
+    width: 70%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  #name {
+    box-sizing: border-box;
+    color: var(--lightgreen);
+    font-size: 1.6em;
+    font-family: var(--sans-serif);
+    font-weight: 600;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+</style>

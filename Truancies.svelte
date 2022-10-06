@@ -3,24 +3,139 @@
   export let subjectKey
   export let studentKey
 
-  import {token, truancies} from '../stores'
-  import {link, location} from 'svelte-spa-router'
+  import {token, truancies, selectedTruancy, showMotivateTruancy, showAddTruancy} from '../stores'
   import {fetchTruancies} from '../fetch/fetch'
+  import {months} from '../utils/utils'
+  import { writable } from 'svelte/store'
+
+  let numberTruancies = writable(0)
+
+  function calcNumberTruancies() {
+    $numberTruancies = $truancies.length
+    return ''
+  }
 
 </script>
 
-<h1>truancies</h1>
 {#await fetchTruancies($token, subjectKey, studentKey) then data}
-  {#each $truancies as truancy}
-    <span>
-      {truancy.dateDay}.{truancy.dateMonth} - 
-      {#if truancy.motivated} 
-        motivata
-      {:else}
-        <a href="{$location}/motivate/{truancy.key}" use:link>nemotivata</a>
-      {/if}
-    </span>
-    <br>
-  {/each}
-  <a href="{$location}/add/truancy" use:link> adauga absenta</a>
+  <div id="container">
+    <div id="title">
+        <div id="title-title">
+          <span>{$numberTruancies}</span> Absențe:
+        </div>
+        <div id="add-button" on:click={() => {$showAddTruancy = true}}>
+          <img src="/img/plus.png" alt="">
+        </div>
+    </div>
+
+    <div id="content">
+      <l>
+        {calcNumberTruancies()}
+        {#each $truancies as truancy}
+          <li id="element">
+            {truancy.dateDay} {months[truancy.dateMonth]}
+            {#if truancy.motivated} 
+              <div class="status">
+                motivată
+              </div>
+            {:else}
+              <div class="status">
+                <span
+                  on:click={() => {$selectedTruancy = truancy; $showMotivateTruancy = true}}
+                  style="color: var(--red); text-decoration: none" 
+                >
+                  motivează
+                </span>
+              </div>
+            {/if}
+          </li>
+        {/each}
+      </l>
+    </div>
+  </div>
 {/await}
+
+
+<style scoped>
+  #container {
+    width: var(--width);
+
+    margin: auto;
+    margin-top: 15px;
+    
+    color: var(--darkgreen);
+    background: var(--white);
+    
+    border-radius: var(--border-radius);
+    border: var(--border);
+
+    box-sizing: border-box;
+    padding: 10px 30px 2.5px 30px;
+  }
+
+  #title {
+    height: 40px;
+    position: relative;
+  }
+
+  #title-title {
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 1.5em;
+    color: var(--darkgreen);
+    
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  #title-title span {
+    color: var(--lightgreen);
+    font-weight: 600;
+    margin-right: 10px;
+
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  #add-button {
+    height: 40px;
+    width: 40px;
+    background: var(--darkgreen);
+    float: right;
+    border-radius: 100%;
+  }
+
+  #add-button img {
+    width: 80%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  #content {
+    width: 100%;
+    
+    box-sizing: border-box;
+    margin-top: 10px;
+
+    color: var(--darkgreen);
+    font-size: 1.3em;
+    font-family: var(--sans-serif);
+  }
+
+  #element {
+    margin-bottom: 15px;
+  }
+
+  .status {
+    float: right;
+    margin-right: 2px;
+    color: var(--lightgreen);
+  }
+</style>

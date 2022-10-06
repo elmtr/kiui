@@ -7,8 +7,8 @@
 
 <select id="input" bind:value={value}>
   {#each list as item} 
-    <option value={('0' + (item + 1)).slice(-2)}>
-      {('0' + (item + 1)).slice(-2)}
+    <option value={item + 1}>
+      {item + 1}
     </option>
   {/each}
 </select>
@@ -16,7 +16,7 @@
 <style scoped>
   #input {
     background: var(--gray);
-    width: 80px;
+    width: 100px;
     height: 40px;
     border-radius: var(--border-radius);
     border: var(--border);

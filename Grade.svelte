@@ -44,7 +44,7 @@
 
 <style scoped>
   #container {
-    width: 96%;
+    width: var(--width);
     height: 80px;
 
     margin: auto;
@@ -52,8 +52,8 @@
 
     background: var(--lightgreen);
 
-    border: 1px solid var(--darkgreen);
-    border-radius: 13px;
+    border: var(--border);
+    border-radius: var(--border-radius);
   }
 
   #grade {
@@ -64,12 +64,15 @@
     padding-left: 20px;
 
     font-size: 1.7em;
+    font-weight: 500;
     color: var(--darkgreen);
 
     position: relative;
+
   }
 
   #grade span {
+    font-family: var(--serif);
     margin: 0;
     position: absolute;
     top: 50%;
@@ -90,6 +93,7 @@
   }
 
   #subjects span {
+    font-family: var(--sans-serif);
     margin: 0;
     position: absolute;
     top: 50%;
