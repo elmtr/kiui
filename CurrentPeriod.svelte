@@ -32,6 +32,15 @@
     return ""
   }
 
+  function findHourInterval(intervals, number) {
+    for (let intervalIndex in intervals) {
+      let interval = intervals[intervalIndex]
+      if (interval.number === number) {
+        return interval
+      }
+    }
+  }
+
   console.log(interval)
   let period = writable(timetable[day][interval][0])
 </script>
@@ -60,8 +69,8 @@
       <br>
 
       <span id="grade-interval">
-        {floatToHour(intervals[interval-1].start)}-
-        {floatToHour(intervals[interval-1].end)}
+        {floatToHour(findHourInterval($school.intervals, interval).start)}-
+        {floatToHour(findHourInterval($school.intervals, interval).end)}
       </span>
     </div>
 
