@@ -30,9 +30,11 @@
         {/each}
       </l>
     </div>
-    <div id="average">
-      Media: {$average}
-    </div>
+    {#if $marks.length > 1}
+      <div id="average">
+        Media: {$average}
+      </div>
+    {/if}
   </div>
 {/await}
 

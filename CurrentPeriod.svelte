@@ -4,7 +4,7 @@
   import { writable } from "svelte/store"
   import {school, now} from '../stores'
 
-  import {floatToHour, intervals} from '../utils/utils'
+  import {floatToHour} from '../utils/utils'
 
   export let timetable = {}
   export let day
@@ -17,17 +17,27 @@
   function calcProgress(start, end, number) {
     let reference = ~~end
 
+    let progressVal = 0
+
     if (number >= reference) {
-      progress.set(Math.floor(
-        (
-          (reference - 1 + 0.6) - start + (number - reference)
-        ) * 200)
-      )
+      let startToRef = 
+        Math.round(
+          ((reference - 1 + 0.6) - start) * 100
+        ) / 100
+
+      let refToTime = (number - reference).toFixed(2)
+      progressVal = 
+        Number((startToRef + Number(refToTime)).toFixed(2)) * 200
     } else {
-      progress.set(
+      progressVal = (
         (number - start) * 200
       )
     }
+
+    if (progressVal > 100) {
+      progressVal = 100
+    }
+    progress.set(progressVal)
 
     return ""
   }
@@ -41,7 +51,6 @@
     }
   }
 
-  console.log(interval)
   let period = writable(timetable[day][interval][0])
 </script>
 

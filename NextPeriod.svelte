@@ -24,35 +24,35 @@
 </script>
 
 {#if $period}
-<a href={`/teacher/${$period.subject.grade.key}`} use:link>
-  <div id="container">
-    <div id="title">
-      <span id="title-content">
-        <span id="title-content-filler">Ora următoare:</span> <span id="subject-name">{$period.subject.name}</span>
-      </span>
-    </div>
+  <a href={`/teacher/${$period.subject.grade.key}`} use:link>
+    <div id="container">
+      <div id="title">
+        <span id="title-content">
+          <span id="title-content-filler">Ora următoare:</span> <span id="subject-name">{$period.subject.name}</span>
+        </span>
+      </div>
 
-    <div id="room">
-      <img src="/img/location.png" alt="">
-      <span>
-        {$period.room}
-      </span>
-    </div>
+      <div id="room">
+        <img src="/img/location.png" alt="">
+        <span>
+          {$period.room}
+        </span>
+      </div>
 
-    <div id="grade">
-      <span id="grade-grade">
-        Clasa  
-        <span style="font-weight: 600">{roman[$period.subject.grade.gradeNumber]}{$period.subject.grade.gradeLetter.toUpperCase()}</span>
-      </span>
-      <br>
+      <div id="grade">
+        <span id="grade-grade">
+          Clasa  
+          <span style="font-weight: 600">{roman[$period.subject.grade.gradeNumber]}{$period.subject.grade.gradeLetter.toUpperCase()}</span>
+        </span>
+        <br>
 
-      <span id="grade-interval">
-        {floatToHour(findHourInterval($school.intervals, interval).start)}-
-        {floatToHour(findHourInterval($school.intervals, interval).end)}
-      </span>
+        <span id="grade-interval">
+          {floatToHour(findHourInterval($school.intervals, interval).start)}-
+          {floatToHour(findHourInterval($school.intervals, interval).end)}
+        </span>
+      </div>
     </div>
-  </div>
-</a>
+  </a>
 {/if}
 
 <style scoped>

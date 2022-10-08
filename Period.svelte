@@ -1,5 +1,7 @@
 <script>
-  import {roman, intervals, floatToHour} from '../utils/utils'
+  import {roman, floatToHour} from '../utils/utils'
+  import {school} from '../stores'
+
   export let period
 </script>
 
@@ -10,7 +12,7 @@
   <div id="row">
     <div id="interval">
       <span>
-        {floatToHour(intervals[period.interval].start)} - {floatToHour(intervals[period.interval].end)}
+        {floatToHour($school.intervals[period.interval].start)} - {floatToHour($school.intervals[period.interval].end)}
       </span>
     </div>
     <div id="room">
