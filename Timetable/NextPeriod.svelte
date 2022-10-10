@@ -1,9 +1,9 @@
 <script>
   import {link} from 'svelte-spa-router'
   import { writable } from "svelte/store"
-  import {school} from '../stores'
+  import {school} from '../../stores'
 
-  import {floatToHour} from '../utils/utils'
+  import {floatToHour} from '../../utils/utils'
 
   export let timetable = {}
   export let day

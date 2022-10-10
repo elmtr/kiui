@@ -12,7 +12,7 @@
 
 <style scoped>
   #header {
-    background: var(--white);
+    background: var(--offwhite);
     height: 60px;
     width: 100%;
     position: fixed;

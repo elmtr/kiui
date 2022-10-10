@@ -1,33 +1,28 @@
 <script>
-  import { fetchDraftMarks, fetchMarks } from '../fetch/fetch'
-  import {updateDefinitivateDraftMark} from '../fetch/update'
-  import {showModifyDraftMark, showDefinitivateDraftMark, selectedDraftMark, token} from '../stores'
-  import {calcAverage, months} from '../utils/utils'
+  import { fetchTruancies } from '../../fetch/fetch'
+  import {updateMotivateTruancy} from '../../fetch/update'
+  import {showMotivateTruancy, selectedTruancy, token} from '../../stores'
+  import {months} from '../../utils/utils'
+
 
 </script>
 
-{#if $showDefinitivateDraftMark}
+{#if $showMotivateTruancy}
   <div id="shadow"></div>
   <div id="window">
-    <div id="text">Definitivează nota ciornă {$selectedDraftMark.value} de pe 
-      {$selectedDraftMark.dateDay} {months[$selectedDraftMark.dateMonth]}?
+    <div id="text">Motivați absența de pe data de 
+      {$selectedTruancy.dateDay} {months[$selectedTruancy.dateMonth]}?
     </div>
 
     <div id="buttons">
-      <div class="button" style="background: var(--gray);" on:click={() => {
-        $showDefinitivateDraftMark = false
-        $showModifyDraftMark = true
-      }}>
+      <div class="button" style="background: var(--gray);" on:click={() => {$showMotivateTruancy = false}}>
         <span>Nu</span>
       </div>
       <div class="button" style="border: var(--border);" 
         on:click={async () => {
-          await updateDefinitivateDraftMark($token, $selectedDraftMark.key)
-          await fetchDraftMarks($token, $selectedDraftMark.subjectKey, $selectedDraftMark.studentKey)
-          let marks = await fetchMarks($token, $selectedDraftMark.subjectKey, $selectedDraftMark.studentKey)
-          calcAverage(marks)
-          $showDefinitivateDraftMark = false
-          $showModifyDraftMark = false
+          await updateMotivateTruancy($token, $selectedTruancy.key)
+          await fetchTruancies($token, $selectedTruancy.subjectKey, $selectedTruancy.studentKey)
+          $showMotivateTruancy = false
         }}
       >
         <span>Da</span>

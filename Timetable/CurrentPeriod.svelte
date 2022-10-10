@@ -1,10 +1,9 @@
 <script>
-  import { onMount } from "svelte"
   import {link} from 'svelte-spa-router'
   import { writable } from "svelte/store"
-  import {school, now} from '../stores'
+  import {school, now} from '../../stores'
 
-  import {floatToHour} from '../utils/utils'
+  import {floatToHour} from '../../utils/utils'
 
   export let timetable = {}
   export let day

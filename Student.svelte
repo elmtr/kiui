@@ -4,9 +4,8 @@
   export let currentSubject
   export let student
 
-  import {link, location} from "svelte-spa-router"
+  import {link} from "svelte-spa-router"
 
-  console.log(student)
 </script>
 
 <!-- <a href="/teacher/{gradeKey}/{$currentSubject}/{student.key}" use:link>{student.lastName} {student.firstName}</a><br> -->

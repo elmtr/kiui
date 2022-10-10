@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte'  
-  import {today} from '../stores'
+  import {today} from '../../stores'
 
   export let day
 

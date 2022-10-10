@@ -2,11 +2,11 @@
 
   export let subjectKey
   export let studentKey
+  export let mod
 
-  import {token, draftMarks, showAddDraftMark, showModifyDraftMark, selectedDraftMark} from '../stores'
-  import {link, location, push} from 'svelte-spa-router'
-  import {fetchDraftMarks} from '../fetch/fetch'
-  import {months} from '../utils/utils'
+  import {token, draftMarks, showAddDraftMark, showModifyDraftMark, selectedDraftMark} from '../../stores'
+  import {fetchDraftMarks} from '../../fetch/fetch'
+  import {months} from '../../utils/utils'
 
 </script>
 
@@ -14,26 +14,31 @@
   <div id="container">
     <div id="title">
         <span>Note ciornă</span>
-        <div id="add-button" on:click={() => {$showAddDraftMark = true}}>
-          <img src="/img/plus.png" alt="">
-        </div>
+        {#if mod}
+          <div id="add-button" on:click={() => {$showAddDraftMark = true}}>
+            <img src="/img/plus.png" alt="">
+          </div>
+        {/if}
     </div>
 
     <div id="content">
-      <l>
-        {#each $draftMarks as draftMark}
-          <li id="element">
-            {draftMark.value} - {draftMark.dateDay} {months[draftMark.dateMonth]}
-            <span id="edit" on:click={() => {
-              $showModifyDraftMark = true
-              $selectedDraftMark = draftMark
-              console.log($selectedDraftMark)
-            }}>
-              edit
-            </span>
-          </li>
-        {/each}
-      </l>
+      {#if $draftMarks.length > 0}
+        <l>
+          {#each $draftMarks as draftMark}
+            <li id="element">
+              {draftMark.value} pe {draftMark.dateDay} {months[draftMark.dateMonth]}
+              <span id="edit" on:click={() => {
+                $showModifyDraftMark = true
+                $selectedDraftMark = draftMark
+              }}>
+                edit
+              </span>
+            </li>
+          {/each}
+        </l>
+      {:else}
+        <div id="not-exist">Nu există note ciornă</div>
+      {/if}
     </div>
   </div>
 {/await}
@@ -100,6 +105,17 @@
     font-family: var(--sans-serif);
   }
 
+  #not-exist {
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    color: var(--darkgreen);
+    font-weight: 600;
+    font-size: 0.9em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
   #element {
     margin-bottom: 15px;
   }
@@ -111,5 +127,4 @@
     color: var(--darkgreen);
     text-decoration: none;
   }
-
 </style>

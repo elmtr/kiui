@@ -2,11 +2,11 @@
 
   export let subjectKey
   export let studentKey
+  export let mod
 
-  import {token, marks, showAddMark, average} from '../stores'
-  import {fetchMarks} from '../fetch/fetch'
-  import {months, calcAverage} from '../utils/utils'
-  import { writable } from 'svelte/store'
+  import {token, marks, showAddMark, average} from '../../stores'
+  import {fetchMarks} from '../../fetch/fetch'
+  import {months, calcAverage} from '../../utils/utils'
 
   console.log(average)
 
@@ -16,19 +16,25 @@
   <div id="container">
     <div id="title">
         <span>Note</span>
-        <div id="add-button" on:click={() => {$showAddMark = true}}>
-          <img src="/img/plus.png" alt="">
-        </div>
+        {#if mod}
+          <div id="add-button" on:click={() => {$showAddMark = true}}>
+            <img src="/img/plus.png" alt="">
+          </div>
+        {/if}
     </div>
     <div id="content">
-      <l>
-        {calcAverage($marks)}
-        {#each $marks as mark}
-          <li id="element">
-            {mark.value} - {mark.dateDay} {months[mark.dateMonth]}
-          </li>
-        {/each}
-      </l>
+      {#if $marks.length > 0}
+        <l>
+          {calcAverage($marks)}
+          {#each $marks as mark}
+            <li id="element">
+              {mark.value} pe {mark.dateDay} {months[mark.dateMonth]}
+            </li>
+          {/each}
+        </l>
+      {:else}
+        <div id="not-exist">Nu există note.</div> 
+      {/if}
     </div>
     {#if $marks.length > 1}
       <div id="average">
@@ -99,6 +105,17 @@
     color: var(--darkgreen);
     font-size: 1.3em;
     font-family: var(--sans-serif);
+  }
+
+  #not-exist {
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    color: var(--darkgreen);
+    font-weight: 600;
+    font-size: 0.9em;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   #element {

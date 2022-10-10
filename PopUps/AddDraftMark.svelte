@@ -1,15 +1,16 @@
 <script>
-  import { fetchDraftMarks } from '../fetch/fetch'
-  import {postDraftMark} from '../fetch/set'
-  import {showAddDraftMark, d, token} from '../stores'
+  import { fetchDraftMarks } from '../../fetch/fetch'
+  import {postDraftMark} from '../../fetch/set'
+  import {showAddDraftMark, d, token} from '../../stores'
 
-  import InputSelect from './InputSelect.svelte'
-  import InputSelectMark from './InputSelectMark.svelte'
-  import SubmitButton from './SubmitButton.svelte'
+  import InputSelect from '../Inputs/InputSelect.svelte'
+  import InputSelectMark from '../Inputs/InputSelectMark.svelte'
+  import InputSelectMonth from '../Inputs/InputSelectMonth.svelte'
+  import SubmitButton from '../Inputs/SubmitButton.svelte'
 
   let value = 10
-  let dateDay = ('0' + d.getDate()).slice(-2)
-  let dateMonth = ('0' + (d.getMonth() + 1)).slice(-2)
+  let dateDay = d.getDate()
+  let dateMonth = d.getMonth() + 1
 
   export let params = {}
 
@@ -24,20 +25,23 @@
     <div id="text">Adaugă notă ciornă</div>
     <div id="data">
       <div class="data-row">
-        <div class="data-cell" style="width: 100%;">
+        <div class="data-cell">
           <span>Nota: </span>
           <InputSelectMark bind:value={value} list={[...Array(10).keys()]} />
         </div>
       </div>
+
       <div class="data-row">
         <div class="data-cell">
           <span>Ziua: </span>
           <InputSelect bind:value={dateDay} list={[...Array(31).keys()]} />
         </div>
+      </div>
 
+      <div class="data-row">
         <div class="data-cell">
           <span>Luna: </span>
-          <InputSelect bind:value={dateMonth} list={[...Array(12).keys()]} />
+          <InputSelectMonth bind:value={dateMonth} list={[...Array(12).keys()]} />
         </div>
       </div>
     </div>
@@ -111,7 +115,6 @@
   }
 
   .data-cell {
-    width: 45%;
     margin-left: 2.5%;
     margin-right: 2.5%;
     float: left;

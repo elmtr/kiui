@@ -2,10 +2,11 @@
 
   export let subjectKey
   export let studentKey
+  export let mod
 
-  import {token, truancies, selectedTruancy, showMotivateTruancy, showAddTruancy} from '../stores'
-  import {fetchTruancies} from '../fetch/fetch'
-  import {months} from '../utils/utils'
+  import {token, truancies, selectedTruancy, showMotivateTruancy, showAddTruancy} from '../../stores'
+  import {fetchTruancies} from '../../fetch/fetch'
+  import {months} from '../../utils/utils'
   import { writable } from 'svelte/store'
 
   let numberTruancies = writable(0)
@@ -23,34 +24,40 @@
         <div id="title-title">
           <span>{$numberTruancies}</span> Absențe:
         </div>
-        <div id="add-button" on:click={() => {$showAddTruancy = true}}>
-          <img src="/img/plus.png" alt="">
-        </div>
+        {#if mod}
+          <div id="add-button" on:click={() => {$showAddTruancy = true}}>
+            <img src="/img/plus.png" alt="">
+          </div>
+        {/if}
     </div>
 
     <div id="content">
-      <l>
-        {calcNumberTruancies()}
-        {#each $truancies as truancy}
-          <li id="element">
-            {truancy.dateDay} {months[truancy.dateMonth]}
-            {#if truancy.motivated} 
-              <div class="status">
-                motivată
-              </div>
-            {:else}
-              <div class="status">
-                <span
-                  on:click={() => {$selectedTruancy = truancy; $showMotivateTruancy = true}}
-                  style="color: var(--red); text-decoration: none" 
-                >
-                  motivează
-                </span>
-              </div>
-            {/if}
-          </li>
-        {/each}
-      </l>
+      {#if $truancies.length > 0}
+        <l>
+          {calcNumberTruancies()}
+          {#each $truancies as truancy}
+            <li id="element">
+              {truancy.dateDay} {months[truancy.dateMonth]}
+              {#if truancy.motivated} 
+                <div class="status">
+                  motivată
+                </div>
+              {:else}
+                <div class="status">
+                  <span
+                    on:click={() => {$selectedTruancy = truancy; $showMotivateTruancy = true}}
+                    style="color: var(--red); text-decoration: none" 
+                  >
+                    motivează
+                  </span>
+                </div>
+              {/if}
+            </li>
+          {/each}
+        </l>
+      {:else}
+        <div id="not-exist">Nu există absențe.</div> 
+      {/if}
     </div>
   </div>
 {/await}
@@ -127,6 +134,17 @@
     color: var(--darkgreen);
     font-size: 1.3em;
     font-family: var(--sans-serif);
+  }
+
+  #not-exist {
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    color: var(--darkgreen);
+    font-weight: 600;
+    font-size: 0.9em;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   #element {

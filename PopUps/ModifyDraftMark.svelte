@@ -1,15 +1,16 @@
 <script>
-  import { fetchDraftMarks } from '../fetch/fetch'
-  import { updateModifyDraftMark } from '../fetch/update'
-  import {showModifyDraftMark, showDefinitivateDraftMark, selectedDraftMark, d, token} from '../stores'
+  import { fetchDraftMarks } from '../../fetch/fetch'
+  import { updateModifyDraftMark } from '../../fetch/update'
+  import {showModifyDraftMark, showDefinitivateDraftMark, selectedDraftMark, d, token} from '../../stores'
 
-  import InputSelect from './InputSelect.svelte'
-  import InputSelectMark from './InputSelectMark.svelte'
-  import SubmitButton from './SubmitButton.svelte'
+  import InputSelect from '../Inputs/InputSelect.svelte'
+  import InputSelectMark from '../Inputs/InputSelectMark.svelte'
+  import InputSelectMonth from '../Inputs/InputSelectMonth.svelte'
+  import SubmitButton from '../Inputs/SubmitButton.svelte'
 
   let value = $selectedDraftMark.value
-  let dateDay = ('0' + d.getDate()).slice(-2)
-  let dateMonth = ('0' + (d.getMonth() + 1)).slice(-2)
+  let dateDay = d.getDate()
+  let dateMonth = d.getMonth() + 1
 
   export let params = {}
 </script>
@@ -33,10 +34,12 @@
           <span>Ziua: </span>
           <InputSelect bind:value={$selectedDraftMark.dateDay} list={[...Array(31).keys()]} />
         </div>
+      </div>
 
+      <div class="data-row">
         <div class="data-cell">
           <span>Luna: </span>
-          <InputSelect bind:value={$selectedDraftMark.dateMonth} list={[...Array(12).keys()]} />
+          <InputSelectMonth bind:value={$selectedDraftMark.dateMonth} list={[...Array(12).keys()]} />
         </div>
       </div>
     </div>
@@ -123,7 +126,6 @@
   }
 
   .data-cell {
-    width: 45%;
     margin-left: 2.5%;
     margin-right: 2.5%;
     float: left;

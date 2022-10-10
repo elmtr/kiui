@@ -2,10 +2,11 @@
 
   export let subjectKey
   export let studentKey
+  export let mod
 
-  import {token} from '../stores'
+  import {token} from '../../stores'
   import {writable} from 'svelte/store'
-  import {fetchPoints} from '../fetch/fetch'
+  import {fetchPoints} from '../../fetch/fetch'
 
   let pointsValue = writable(0);
 
@@ -29,7 +30,7 @@
   import {
     updateDecreasePoints, 
     updateIncreasePoints
-  } from '../fetch/update'
+  } from '../../fetch/update'
 
 </script>
 
@@ -39,15 +40,17 @@
       Puncte: <span>{$pointsValue}</span>
     </div>
 
-    <div id="buttons">
-      <div class="button" on:click={() => {decreasePoints(points.key)}}>
-        <img src="/img/minus.png" alt="">
-      </div>
+    {#if mod}
+      <div id="buttons">
+        <div class="button" on:click={() => {decreasePoints(points.key)}}>
+          <img src="/img/minus.png" alt="">
+        </div>
 
-      <div class="button" on:click={() => {increasePoints(points.key)}} style="left: 57px;">
-        <img src="/img/plus.png" alt="">
+        <div class="button" on:click={() => {increasePoints(points.key)}} style="left: 57px;">
+          <img src="/img/plus.png" alt="">
+        </div>
       </div>
-    </div>
+    {/if}
   </div>
 {/await}
 

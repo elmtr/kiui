@@ -1,6 +1,6 @@
 <script>
-  import {roman, floatToHour} from '../utils/utils'
-  import {school} from '../stores'
+  import {roman, floatToHour} from '../../utils/utils'
+  import {school} from '../../stores'
 
   export let period
 </script>

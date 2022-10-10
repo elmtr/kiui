@@ -1,51 +1,46 @@
 <script>
-  import { fetchMarks } from '../fetch/fetch'
-  import {postMark} from '../fetch/set'
-  import {showAddMark, d, token} from '../stores'
+  import { fetchTruancies } from '../../fetch/fetch'
+  import {postTruancy} from '../../fetch/set'
+  import {showAddTruancy, d, token} from '../../stores'
 
-  import InputSelect from './InputSelect.svelte'
-  import InputSelectMark from './InputSelectMark.svelte'
-  import SubmitButton from './SubmitButton.svelte'
+  import InputSelect from '../Inputs/InputSelect.svelte'
+  import InputSelectMonth from '../Inputs/InputSelectMonth.svelte'
+  import SubmitButton from '../Inputs/SubmitButton.svelte'
 
-  let value = 10
-  let dateDay = ('0' + d.getDate()).slice(-2)
-  let dateMonth = ('0' + (d.getMonth() + 1)).slice(-2)
+  let dateDay = d.getDate()
+  let dateMonth = d.getMonth() + 1
 
   export let params = {}
 
 </script>
 
-{#if $showAddMark}
+{#if $showAddTruancy}
   <div id="shadow"></div>
   <div id="window">
-    <div id="close" on:click={() => {$showAddMark = false}}>
+    <div id="close" on:click={() => {$showAddTruancy = false}}>
       <img src="/img/close.png" alt="">
     </div>
-    <div id="text">Adaugă notă</div>
+    <div id="text">Adaugă absență</div>
     <div id="data">
-      <div class="data-row">
-        <div class="data-cell" style="width: 100%;">
-          <span>Nota: </span>
-          <InputSelectMark bind:value={value} list={[...Array(10).keys()]} />
-        </div>
-      </div>
       <div class="data-row">
         <div class="data-cell">
           <span>Ziua: </span>
           <InputSelect bind:value={dateDay} list={[...Array(31).keys()]} />
         </div>
+      </div>
 
+      <div class="data-row">
         <div class="data-cell">
           <span>Luna: </span>
-          <InputSelect bind:value={dateMonth} list={[...Array(12).keys()]} />
+          <InputSelectMonth bind:value={dateMonth} list={[...Array(12).keys()]} />
         </div>
       </div>
     </div>
     <div id="button">
       <SubmitButton value="Adaugă" onClick={async () => {
-        await postMark($token, value, dateDay, dateMonth, params.subjectKey, params.studentKey)
-        await fetchMarks($token, params.subjectKey, params.studentKey)
-        $showAddMark = false
+        await postTruancy($token, dateDay, dateMonth, params.subjectKey, params.studentKey)
+        await fetchTruancies($token, params.subjectKey, params.studentKey)
+        $showAddTruancy = false
       }}/>
     </div>
   </div>
@@ -61,7 +56,7 @@
   }
   #window {
     width: 90%;
-    height: 350px;
+    height: 300px;
 
     background: var(--white);
     border-radius: var(--border-radius);
@@ -111,7 +106,6 @@
   }
 
   .data-cell {
-    width: 45%;
     margin-left: 2.5%;
     margin-right: 2.5%;
     float: left;
