@@ -13,7 +13,8 @@
     height: 50px;
     background: var(--lightgreen);
     color: var(--darkgreen);
-    border: var(--border);
+    border: none;
+    /* border: var(--border); */
     border-radius: var(--border-radius);
     font-size: 1.2em;
   }

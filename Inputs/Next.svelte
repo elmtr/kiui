@@ -1,26 +1,38 @@
 <script>
   export let onClick
+  export let active
 </script>
 
-<div id="container" on:click={onClick}>
-  <span>Continuă</span>
-</div>
+{#if active} 
+  <div class="container" on:click={onClick}>
+    <span>Continuă</span>
+  </div>
+{:else}
+  <div class="container active-false">
+    <span>Continuă</span>
+  </div>
+{/if}
 
 <style scoped>
-  #container {
+  .container {
     width: 120px;
     height: 60px;
-    border-radius: var(--border-radius);
-    background: var(--darkgreen);
+    border-radius: 300px;
+    background: var(--lightgreen);
 
     position: fixed;
     right: 20px;
     bottom: 20px;
 
-    color: var(--lightgreen);
+    color: var(--darkgreen);
   }
 
-  #container span {
+  .active-false {
+    color: var(--darkgreen-transparent);
+    background: var(--lightgreen-transparent);
+  }
+
+  .container span {
     margin: 0;
     position: absolute;
     top: 50%;

@@ -30,7 +30,8 @@
     border-radius: var(--border-radius);
 
     box-sizing: border-box;
-    padding: 20px 10px 15px 10px;
+    padding: 7px;
+    padding-top: 15px;
     margin-bottom: 10px;
   }
 

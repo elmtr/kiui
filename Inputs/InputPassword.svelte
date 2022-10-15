@@ -5,6 +5,8 @@
   export let placeholder
   export let preinput
 
+  export let discoverable = true
+
   let toggle = false
 
   function changeToggle() {
@@ -40,13 +42,15 @@
         <input type="password" placeholder={placeholder} bind:value={value} style="left: 10px;">
       {/if}
     {/if}
-    <div id="toggle" on:click={changeToggle}>
-      {#if toggle}
-        <img src="/img/location-lightgreen.png" alt=""> 
-      {:else}
-        <img src="/img/location-darkgreen.png" alt=""> 
-      {/if}
-    </div>
+    {#if discoverable}
+      <div id="toggle" on:click={changeToggle}>
+        {#if toggle}
+          <img src="/img/location-lightgreen.png" alt=""> 
+        {:else}
+          <img src="/img/location-darkgreen.png" alt=""> 
+        {/if}
+      </div>
+    {/if}
   </div>
 </div>
 
@@ -59,7 +63,8 @@
     border-radius: var(--border-radius);
 
     box-sizing: border-box;
-    padding: 20px 10px 15px 10px;
+    padding: 7px;
+    padding-top: 15px;
     margin-bottom: 10px;
   }
 
