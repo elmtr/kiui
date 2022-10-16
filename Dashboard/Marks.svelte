@@ -8,8 +8,6 @@
   import {fetchMarks} from '../../fetch/fetch'
   import {months, calcAverage} from '../../utils/utils'
 
-  console.log(average)
-
 </script>
 
 {#await fetchMarks($token, subjectKey, studentKey) then data}

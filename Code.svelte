@@ -9,7 +9,7 @@
         {#if value[0]}
           <span>{value[0]}</span>
         {:else}
-          <span id="blink">_</span>
+          <span id="blink">|</span>
         {/if}
       </div>
     </div>
