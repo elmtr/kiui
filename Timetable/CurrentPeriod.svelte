@@ -8,6 +8,7 @@
   export let timetable = {}
   export let day
   export let interval
+  export let user
 
   let progress = writable(70)
 
@@ -54,7 +55,7 @@
 </script>
 
 {#if $period}
-<a href={`/teacher/${$period.subject.grade.key}`} use:link>
+<a href={`/${user}/${$period.subject.grade.key}`} use:link>
   <div id="container">
     <div id="title">
       <span id="title-content">

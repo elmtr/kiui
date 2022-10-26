@@ -8,6 +8,7 @@
   export let timetable = {}
   export let day
   export let interval
+  export let user
 
   let roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII"]
 
@@ -24,7 +25,7 @@
 </script>
 
 {#if $period}
-  <a href={`/teacher/${$period.subject.grade.key}`} use:link>
+  <a href={`/${user}/${$period.subject.grade.key}`} use:link>
     <div id="container">
       <div id="title">
         <span id="title-content">

@@ -22,4 +22,12 @@
     border: var(--border);
     font-size: 17px;
   }
+
+  #input:focus-visible {
+    outline: none;
+  }
+
+  #input:focus-within {
+    outline: none;
+  }
 </style>

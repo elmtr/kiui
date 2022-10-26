@@ -18,7 +18,7 @@
         {#if value[1]}
           <span>{value[1]}</span>
         {:else if value[0]}
-          <span id="blink">_</span>
+          <span id="blink">|</span>
         {/if}
       </div>
     </div>
@@ -27,7 +27,7 @@
         {#if value[2]}
           <span>{value[2]}</span>
         {:else if value[1]}
-          <span id="blink">_</span>
+          <span id="blink">|</span>
         {/if}
       </div>
     </div>
@@ -43,7 +43,7 @@
         {#if value[3]}
           <span>{value[3]}</span>
         {:else if value[2]}
-          <span id="blink">_</span>
+          <span id="blink">|</span>
         {/if}
       </div>
     </div>
@@ -52,7 +52,7 @@
         {#if value[4]}
           <span>{value[4]}</span>
         {:else if value[3]}
-          <span id="blink">_</span>
+          <span id="blink">|</span>
         {/if}
       </div>
     </div>
@@ -61,7 +61,7 @@
         {#if value[5]}
           <span>{value[5]}</span>
         {:else if value[4]}
-          <span id="blink">_</span>
+          <span id="blink">|</span>
         {/if}
       </div>
     </div>
