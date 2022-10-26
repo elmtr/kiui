@@ -79,9 +79,7 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
- 
 
-  
   #room img {
     height: 85%;
     margin: 0;
