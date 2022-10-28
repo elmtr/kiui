@@ -56,9 +56,9 @@
   let linkTo = ""
   $: {
     if (user === 'student') {
-      linkTo = $period.subject.key
+      linkTo = $period.subject.key ? $period.subject.key : ""
     } else if (user === 'teacher') {
-      linkTo = $period.subject.grade.key
+      linkTo = $period.subject.grade.key ? $period.subject.grade.key : ""
     }
   }
 </script>
