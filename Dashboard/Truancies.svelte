@@ -13,6 +13,7 @@
 
   function calcNumberTruancies() {
     $numberTruancies = $truancies.length
+
     return ''
   }
 
@@ -22,7 +23,12 @@
   <div id="container">
     <div id="title">
         <div id="title-title">
-          <span>{$numberTruancies}</span> Absențe:
+          <span>{$numberTruancies}</span> 
+          {#if $numberTruancies === 1}
+            Absență:
+          {:else}
+            Absențe:
+          {/if}
         </div>
         {#if mod}
           <div id="add-button" on:click={() => {$showAddTruancy = true}}>
