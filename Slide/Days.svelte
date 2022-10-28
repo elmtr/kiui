@@ -4,7 +4,7 @@
 
   export let day
 
-  let daysString = ['', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri']
+  let daysString = ['', 'Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri']
 
   onMount(() => {
     if ($today > 5) {
@@ -49,6 +49,8 @@
     border: var(--border);
     margin: auto;
     margin-top: 20px;
+    box-shadow: 0 1px 5px var(--gray);
+
 
     position: relative;
   }

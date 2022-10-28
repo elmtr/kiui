@@ -19,7 +19,7 @@
 
     <div id="info">
       <span>
-        Medie: x; Absente: x
+        -/-
       </span>
     </div>
   </div>
@@ -32,6 +32,8 @@
 
     margin: auto;
     margin-top: 10px;
+
+    box-shadow: 0 1px 5px var(--gray);
 
     background: var(--lightgreen);
 

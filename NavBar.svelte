@@ -10,12 +10,12 @@
       <a href="/" use:link>
         {#if location === "home"}
           <div class="icon icon-selected">
-            <img src="/img/close.png" alt="">
+            <img src="/img/location-darkgreen.png" alt="">
             <span>Acasă</span>
           </div>
         {:else} 
           <div class="icon icon-not-selected">
-            <img src="/img/close.png" alt="">
+            <img src="/img/location-lightgreen.png" alt="">
           </div>
         {/if}
       </a>
@@ -24,12 +24,12 @@
       <a href="/timetable" use:link>
         {#if location === "timetable"}
           <div class="icon icon-selected">
-            <img src="/img/close.png" alt="">
+            <img src="/img/location-darkgreen.png" alt="">
             <span>Orar</span>
           </div>
         {:else} 
           <div class="icon icon-not-selected">
-            <img src="/img/close.png" alt="">
+            <img src="/img/location-lightgreen.png" alt="">
           </div>
         {/if}
       </a>
@@ -38,12 +38,12 @@
       <a href="/profile" use:link>
         {#if location === "profile"}
           <div class="icon icon-selected">
-            <img src="/img/close.png" alt="">
+            <img src="/img/location-darkgreen.png" alt="">
             <span>Profil</span>
           </div>
         {:else} 
           <div class="icon icon-not-selected">
-            <img src="/img/close.png" alt="">
+            <img src="/img/location-lightgreen.png" alt="">
           </div>
         {/if}
       </a>
@@ -53,11 +53,17 @@
 
 <style scoped>
   #container {
-    width: 100%;
+    width: calc(calc(93 * var(--container)) / 100);
     height: 60px;
-    background: var(--gray);
+    background: var(--white);
+    box-shadow: 0 1px 5px var(--gray);
     position: fixed;
-    bottom: 0;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: var(--border-radius);
+    z-index: 10;
+    margin: auto;
   }
 
   #navbar {
@@ -75,7 +81,8 @@
 
   .icon-selected {
     background: var(--lightgreen);
-    width: 90%;
+    width: 95%;
+    max-width: 130px;
     height: 70%;
     border-radius: var(--border-radius);
     
@@ -120,7 +127,7 @@
     transform: translate(-50%, -50%);
   }
 
-
-
-
+  .icon img {
+    height: 20px;
+  }
 </style>

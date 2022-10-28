@@ -2,10 +2,8 @@
   import { fetchTruancies } from '../../fetch/fetch'
   import {postTruancy} from '../../fetch/set'
   import {showAddTruancy, d, token} from '../../stores'
-
-  import InputSelect from '../Inputs/InputSelect.svelte'
-  import InputSelectMonth from '../Inputs/InputSelectMonth.svelte'
-  import SubmitButton from '../Inputs/SubmitButton.svelte'
+  import AddButton from '../Inputs/AddButton.svelte'
+  import InputSelectDate from '../Inputs/InputSelectDate.svelte'
 
   let dateDay = d.getDate()
   let dateMonth = d.getMonth() + 1
@@ -18,107 +16,92 @@
   <div id="shadow"></div>
   <div id="window">
     <div id="close" on:click={() => {$showAddTruancy = false}}>
-      <img src="/img/close.png" alt="">
+      <img src="/img/left-darkgreen.png" alt="">
     </div>
-    <div id="text">Adaugă absență</div>
-    <div id="data">
-      <div class="data-row">
-        <div class="data-cell">
-          <span>Ziua: </span>
-          <InputSelect bind:value={dateDay} list={[...Array(31).keys()]} />
-        </div>
-      </div>
+    <div id="title">
+      <span>
+        Adaugă absență
+      </span>
+    </div>
 
-      <div class="data-row">
-        <div class="data-cell">
-          <span>Luna: </span>
-          <InputSelectMonth bind:value={dateMonth} list={[...Array(12).keys()]} />
-        </div>
-      </div>
-    </div>
+    <br><br>
+    <InputSelectDate bind:month={dateMonth} bind:day={dateDay} />
+
     <div id="button">
-      <SubmitButton value="Adaugă" onClick={async () => {
+      <AddButton value="Confirmă" onClick={async () => {
         await postTruancy($token, dateDay, dateMonth, params.subjectKey, params.studentKey)
         await fetchTruancies($token, params.subjectKey, params.studentKey)
         $showAddTruancy = false
-      }}/>
+      }} />
     </div>
   </div>
 {/if}
 
 <style scoped>
-  #shadow {
+#shadow {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
+    left: 0;
+    z-index: 3;
+    margin: auto;
   }
+
   #window {
     width: 90%;
-    height: 300px;
+    max-width: 400px;
+    height: 95%;
 
     background: var(--white);
     border-radius: var(--border-radius);
 
     position: fixed;
 
-    margin-left: 5%;
-    bottom: 20px;
-  }
-
-  #text {
-    width: 60%;
-    margin: auto;
-    margin-top: 20px;
-    font-size: 1.3em;
-    font-family: var(--sans-serif);
-    color: var(--darkgreen);
-    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
   }
 
   #close {
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    width: 95%;
+    height: 40px;
+    margin: auto;
+    margin-top: 10px;
   }
 
   #close img {
-    width: 100%;
-    height: 100%;
+    height: 95%;
 
+    position: relative;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
   }
 
-  #data {
-    margin-top: 25px;
-    width: 90%;
-    margin-left: 5%;
-    box-sizing: border-box;
-  }
-
-  .data-row {
-    width: 100%;
+  #title {
+    width: 95%;
     height: 40px;
-    float: left;
-    margin-bottom: 10px;
+    margin: auto;
   }
 
-  .data-cell {
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    float: left;
-    color: var(--darkgreen);
-    font-size: 1.2em;
+  #title span {
+    position: relative;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    font-weight: 600;
     font-family: var(--sans-serif);
+    color: var(--darkgreen);
   }
 
   #button {
-    width: 90%;
-
     position: absolute;
+    bottom: 10px;
+    width: 90%;
     left: 5%;
-    bottom: 20px;
   }
 </style>
