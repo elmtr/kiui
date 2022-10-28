@@ -27,12 +27,14 @@
           {#each $draftMarks as draftMark}
             <li id="element">
               {draftMark.value} pe {draftMark.dateDay} {months[draftMark.dateMonth]}
-              <span id="edit" on:click={() => {
-                $showModifyDraftMark = true
-                $selectedDraftMark = draftMark
-              }}>
-                edit
-              </span>
+              {#if mod}
+                <span id="edit" on:click={() => {
+                  $showModifyDraftMark = true
+                  $selectedDraftMark = draftMark
+                }}>
+                  edit
+                </span>
+              {/if}
             </li>
           {/each}
         </l>

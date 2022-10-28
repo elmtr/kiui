@@ -54,7 +54,11 @@
                     on:click={() => {$selectedTruancy = truancy; $showMotivateTruancy = true}}
                     style="color: var(--red); text-decoration: none" 
                   >
-                    motivează
+                    {#if mod}
+                      motivează
+                    {:else}
+                      nemotivată
+                    {/if}
                   </span>
                 </div>
               {/if}
