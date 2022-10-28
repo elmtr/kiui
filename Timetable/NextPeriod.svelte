@@ -24,10 +24,12 @@
   let period = writable(timetable[day][interval][0])
   let linkTo = ""
   $: {
-    if (user === 'student') {
-      linkTo = $period.subject.key
-    } else if (user === 'teacher') {
-      linkTo = $period.subject.grade.key
+    if ($period) {
+      if (user === 'student') {
+        linkTo = $period.subject.key
+      } else if (user === 'teacher') {
+        linkTo = $period.subject.grade.key
+      }
     }
   }
 </script>
