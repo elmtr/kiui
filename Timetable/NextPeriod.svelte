@@ -22,10 +22,18 @@
   }
 
   let period = writable(timetable[day][interval][0])
+  let linkTo = ""
+  $: {
+    if (user === 'student') {
+      linkTo = $period.subject.key
+    } else if (user === 'teacher') {
+      linkTo = $period.subject.grade.key
+    }
+  }
 </script>
 
 {#if $period}
-  <a href={`/${user}/${$period.subject.grade.key}`} use:link>
+  <a href={`/${user}/${linkTo}`} use:link>
     <div id="container">
       <div id="title">
         <span id="title-content">
