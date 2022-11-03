@@ -33,7 +33,6 @@
     </div>
   </div>
 </div> 
-
 <div class="row">
   <div class="cell">
     <div class="key" on:click={() => {addDigit(4)}}>
@@ -51,7 +50,6 @@
     </div>
   </div>
 </div> 
-
 <div class="row">
   <div class="cell">
     <div class="key" on:click={() => {addDigit(7)}}>
@@ -71,7 +69,7 @@
 </div> 
 <div class="row">
   <div class="cell">
-    <div class="key" style="background: var(--lightgreen);" on:click={() => {removeDigit()}}>
+    <div class="key" style="color: var(--lightgreen);" on:click={() => {removeDigit()}}>
       <div>
         <img src="/img/close.png" alt="" style="width: var(" >
       </div>
@@ -84,8 +82,8 @@
   </div>
   <div class="cell">
     {#if okButton}
-      <div class="key" style="background: var(--lightgreen);" on:click={onClick}>
-        <div>ok</div>
+      <div class="key" style="color: var(--lightgreen);" on:click={onClick}>
+        <div style="color: var(--lightgreen);">ok</div>
       </div>
     {/if}
   </div>
@@ -97,7 +95,7 @@
     height: 60px;
     width: 80%;
     margin: auto;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
   }
@@ -108,9 +106,6 @@
 
   .key {
     margin: auto;
-    background: var(--white);
-    border-radius: 100%;
-    border: var(--border);
     width: 60px;
     height: 60px;
 
@@ -122,6 +117,7 @@
     text-align: center;
     font-family: var(--sans-serif);
     color: var(--darkgreen);
+    font-size: 1.3em;
 
     margin: 0;
     position: absolute;

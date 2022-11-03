@@ -69,7 +69,7 @@
   }
 
   #navbar {
-    width: 90%;
+    width: calc(calc(93 * var(--container)) / 100);
     height: 100%; 
     margin: auto;
     display: flex;
