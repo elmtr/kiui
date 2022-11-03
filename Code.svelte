@@ -87,8 +87,8 @@
 
   .digit {
     background: var(--white);
-    height: 50px;
-    width: 50px;
+    height: 45px;
+    width: 45px;
     border-radius: 30%;
 
     position: relative;
