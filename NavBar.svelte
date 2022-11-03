@@ -53,15 +53,17 @@
 
 <style scoped>
   #container {
-    width: calc(calc(93 * var(--container)) / 100);
+    /* width: calc(calc(93 * var(--container)) / 100); */
+    width: 100%;
     height: 60px;
-    background: var(--white);
+    background: var(--offwhite);
     box-shadow: 0 1px 5px var(--gray);
     position: fixed;
-    bottom: 10px;
+    /* bottom: 10px; */
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: var(--border-radius);
+    /* border-radius: var(--border-radius); */
     z-index: 10;
     margin: auto;
   }
