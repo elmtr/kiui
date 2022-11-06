@@ -65,7 +65,7 @@
     transform: translateY(-50%);
   }
 
-  #info {
+  /* #info {
     width: 100%;
 
     box-sizing: border-box;
@@ -84,5 +84,5 @@
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-  }
+  } */
 </style>
