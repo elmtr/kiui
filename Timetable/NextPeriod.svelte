@@ -44,7 +44,7 @@
       </div>
 
       <div id="room">
-        <img src="/img/location.png" alt="">
+        <img src="/img/location.svg" alt="">
         <span>
           {$period.room}
         </span>

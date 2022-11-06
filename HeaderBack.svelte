@@ -4,7 +4,7 @@
 
 <div id="header">
   <div id="back-button" on:click={() => {pop()}}>
-    <img src="/img/left.png" alt="">
+    <img src="/img/left.svg" alt="">
   </div>
 </div>
 

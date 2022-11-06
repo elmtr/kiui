@@ -22,7 +22,7 @@
       day.update(value => value - 1)
     }
   }}>
-    <img src="/img/left-lightgreen.png" alt="">
+    <img src="/img/left.svg" alt="">
   </div>
 
   <span id="name">
@@ -36,7 +36,7 @@
       day.update(value => value + 1)
     }
   }}>
-    <img src="/img/right-lightgreen.png" alt="">
+    <img src="/img/right.svg" alt="">
   </div>
 </div>
 
@@ -64,6 +64,7 @@
 
   #left img {
     width: 70%;
+    filter: var(--lightgreen-filter);
     margin: 0;
     position: absolute;
     top: 50%;
@@ -81,6 +82,7 @@
 
   #right img {
     width: 70%;
+    filter: var(--lightgreen-filter);
     margin: 0;
     position: absolute;
     top: 50%;

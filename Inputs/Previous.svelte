@@ -3,7 +3,7 @@
 </script>
 
 <div id="container" on:click={onClick}>
-  <img src="/img/left-darkgreen.png" alt="">
+  <img src="/img/back.svg" alt="">
   <span>Inapoi</span>
 </div>
 
@@ -20,7 +20,8 @@
   }
 
   #container img {
-    width: 30px;
+    width: 25px;
+    filter: var(--darkgreen-filter);
 
     position: absolute;
     top: 50%;

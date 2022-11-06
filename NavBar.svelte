@@ -10,12 +10,12 @@
       <a href="/" use:link>
         {#if location === "home"}
           <div class="icon icon-selected">
-            <img src="/img/location-darkgreen.png" alt="">
+            <img src="/img/home.svg" alt="">
             <span>Acasă</span>
           </div>
         {:else} 
           <div class="icon icon-not-selected">
-            <img src="/img/location-lightgreen.png" alt="">
+            <img src="/img/home.svg" alt="">
           </div>
         {/if}
       </a>
@@ -24,12 +24,12 @@
       <a href="/timetable" use:link>
         {#if location === "timetable"}
           <div class="icon icon-selected">
-            <img src="/img/location-darkgreen.png" alt="">
+            <img src="/img/timetable.svg" style="width: 27px; height: 27px;" alt="">
             <span>Orar</span>
           </div>
         {:else} 
           <div class="icon icon-not-selected">
-            <img src="/img/location-lightgreen.png" alt="">
+            <img src="/img/timetable.svg" style="width: 30px; height: 30px;" alt="">
           </div>
         {/if}
       </a>
@@ -38,12 +38,12 @@
       <a href="/profile" use:link>
         {#if location === "profile"}
           <div class="icon icon-selected">
-            <img src="/img/location-darkgreen.png" alt="">
+            <img src="/img/profile.svg" alt="">
             <span>Profil</span>
           </div>
         {:else} 
           <div class="icon icon-not-selected">
-            <img src="/img/location-lightgreen.png" alt="">
+            <img src="/img/profile.svg" alt="">
           </div>
         {/if}
       </a>
@@ -96,11 +96,13 @@
   }
 
   .icon-selected img {
-    height: 80%;
+    height: 25px;
+    width: 25px;
+    filter: var(--darkgreen-filter);
 
     position: absolute;
-    top: 50%;
-    left: 10px;
+    top: 47%;
+    left: 15px;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
@@ -121,8 +123,10 @@
   }
 
   .icon-not-selected img {
-    height: 35px;
+    height: 25px;
+    width: 25px;
     position: absolute;
+    filter: var(--lightgreen-filter);
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);

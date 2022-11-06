@@ -36,7 +36,7 @@
     loadSubjects()
     currentSubject.set($prevSubject)
   }}>
-    <img src="/img/left-lightgreen.png" alt="">
+    <img src="/img/left.svg" alt="">
   </div>
 
   <span id="name">
@@ -47,7 +47,7 @@
     loadSubjects()
     currentSubject.set($nextSubject)
   }}>
-    <img src="/img/right-lightgreen.png" alt="">
+    <img src="/img/right.svg" alt="">
   </div>
 </div>
 
@@ -74,6 +74,7 @@
 
   #left img {
     width: 70%;
+    filter: var(--lightgreen-filter);
     margin: 0;
     position: absolute;
     top: 50%;
@@ -91,6 +92,7 @@
 
   #right img {
     width: 70%;
+    filter: var(--lightgreen-filter);
     margin: 0;
     position: absolute;
     top: 50%;

@@ -33,7 +33,6 @@
         (number - start) * 200
       )
     }
-
     if (progressVal > 100) {
       progressVal = 100
     }
@@ -75,7 +74,7 @@
     </div>
 
     <div id="room">
-      <img src="/img/location-lightgreen.png" alt="">
+      <img src="/img/location.svg" alt="">
       <span>
         {$period.room}
       </span>
@@ -94,7 +93,7 @@
       </span>
     </div>
 
-    {calcProgress($school.intervals[interval-1].start, $school.intervals[interval-1].end, $now)}
+    {calcProgress($school.intervals[interval].start, $school.intervals[interval].end, $now)}
     <div id="progress">
       <div id="progress-bar-container">
         <div id="progress-bar" style={`width: ${$progress}%`}></div>
@@ -165,7 +164,8 @@
   }
 
   #room img {
-    height: 85%;
+    height: 70%;
+    filter: var(--lightgreen-filter);
     margin: 0;
     position: absolute;
     top: 50%;

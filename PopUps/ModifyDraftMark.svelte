@@ -26,7 +26,7 @@
   <div id="shadow"></div>
   <div id="window">
     <div id="close" on:click={() => {$showModifyDraftMark = false}}>
-      <img src="/img/left-darkgreen.png" alt="">
+      <img src="/img/left.svg" alt="">
     </div>
     <div id="title">
       <span>
@@ -97,6 +97,7 @@
 
   #close img {
     height: 95%;
+    filter: var(--darkgreen-filter);
 
     position: relative;
     top: 50%;
