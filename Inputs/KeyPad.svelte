@@ -71,7 +71,7 @@
   <div class="cell">
     <div class="key" style="color: var(--lightgreen);" on:click={() => {removeDigit()}}>
       <div>
-        <img src="/img/close.png" alt="" style="width: var(" >
+        <img src="/img/backspace.svg" alt="" style="width: var(" >
       </div>
     </div>
   </div>
@@ -83,7 +83,7 @@
   <div class="cell">
     {#if okButton}
       <div class="key" style="color: var(--lightgreen);" on:click={onClick}>
-        <div style="color: var(--lightgreen);">ok</div>
+        <div style="color: var(--darkgreen);">ok</div>
       </div>
     {/if}
   </div>
@@ -128,5 +128,6 @@
 
   .key div img {
     width: 30px;
+    filter: var(--darkgreen-filter);
   }
 </style>

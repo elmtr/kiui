@@ -32,7 +32,7 @@
         </div>
         {#if mod}
           <div id="add-button" on:click={() => {$showAddTruancy = true}}>
-            <img src="/img/plus.png" alt="">
+            <img src="/img/plus.svg" alt="">
           </div>
         {/if}
     </div>
@@ -128,6 +128,7 @@
 
   #add-button img {
     width: 80%;
+    filter: var(--darkgreen-filter);
     position: relative;
     top: 50%;
     left: 50%;

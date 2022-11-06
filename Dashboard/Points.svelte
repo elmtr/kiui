@@ -43,11 +43,11 @@
     {#if mod}
       <div id="buttons">
         <div class="button" on:click={() => {decreasePoints(points.key)}}>
-          <img src="/img/minus.png" alt="">
+          <img src="/img/minus.svg" alt="">
         </div>
 
         <div class="button" on:click={() => {increasePoints(points.key)}} style="left: 57px;">
-          <img src="/img/plus.png" alt="">
+          <img src="/img/plus.svg" alt="">
         </div>
       </div>
     {/if}
@@ -106,6 +106,7 @@
   .button img {
     height: 80%;
     position: relative;
+    filter: var(--white-filter);
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);

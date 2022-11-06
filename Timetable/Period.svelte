@@ -16,7 +16,7 @@
       </span>
     </div>
     <div id="room">
-      <img src="/img/location-darkgreen.png" alt="">
+      <img src="/img/location.svg" alt="">
       <span>
         {period.room}
       </span>
@@ -82,6 +82,7 @@
 
   #room img {
     height: 85%;
+    filter: var(--darkgreen-filter);
     margin: 0;
     position: absolute;
     top: 50%;

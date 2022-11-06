@@ -17,7 +17,6 @@
     } else {
       console.log('you fucked up')
     }
-    
   }
 
 </script>
@@ -45,9 +44,9 @@
     {#if discoverable}
       <div id="toggle" on:click={changeToggle}>
         {#if toggle}
-          <img src="/img/location-lightgreen.png" alt=""> 
+          <img src="/img/eye.svg" style="filter: var(--lightgreen-filter)" alt=""> 
         {:else}
-          <img src="/img/location-darkgreen.png" alt=""> 
+          <img src="/img/eye.svg" style="filter: var(--darkgreen-filter)" alt=""> 
         {/if}
       </div>
     {/if}
