@@ -86,8 +86,8 @@
   }
 
   #add-button img {
-    width: 80%;
-    filter: var(--darkgreen-filter);
+    width: 55%;
+    filter: var(--white-filter);
     position: relative;
     top: 50%;
     left: 50%;

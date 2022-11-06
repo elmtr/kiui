@@ -81,7 +81,7 @@
   }
 
   #room img {
-    height: 85%;
+    height: 65%;
     filter: var(--darkgreen-filter);
     margin: 0;
     position: absolute;

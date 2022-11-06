@@ -104,7 +104,7 @@
   }
 
   .button img {
-    height: 80%;
+    width: 55%;
     position: relative;
     filter: var(--white-filter);
     top: 50%;
