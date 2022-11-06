@@ -17,18 +17,18 @@
       </span>
     </div>
 
-    <div id="info">
+    <!-- <div id="info">
       <span>
         -/-
       </span>
-    </div>
+    </div> -->
   </div>
 </a>
 
 <style scoped>
   #container {
     width: var(--width);
-    height: 80px;
+    height: 60px;
 
     margin: auto;
     margin-top: 10px;
@@ -43,7 +43,7 @@
 
   #name {
     width: 100%;
-    height: 70%;
+    height: 100%;
 
     box-sizing: border-box;
     padding-left: 20px;
