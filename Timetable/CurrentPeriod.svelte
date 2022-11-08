@@ -56,16 +56,20 @@
   $: {
     if ($period) {
       if (user === 'student') {
-        linkTo = $period.subject.key
+        if ($period.subject.key === "0") {
+          linkTo = "/"
+        } else {
+          linkTo = '/' + user + '/' + $period.subject.key
+        }
       } else if (user === 'teacher') {
-        linkTo = $period.subject.grade.key
+        linkTo = '/' + user + '/' + $period.subject.grade.key
       }
     }
   }
 </script>
 
 {#if $period}
-<a href={`/${user}/${linkTo}`} use:link>
+<a href={linkTo} use:link>
   <div id="container">
     <div id="title">
       <span id="title-content">

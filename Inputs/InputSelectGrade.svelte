@@ -15,7 +15,7 @@
 
 <style scoped>
   #input {
-    background: var(--gray);
+    background: var(--offwhite);
     width: 80px;
     height: 40px;
     border-radius: var(--border-radius);
