@@ -54,6 +54,7 @@
 
   .container img {
     width: 20px;
+    filter: var(--darkgreen-filter);
     
     position: absolute;
     top: 50%;

@@ -3,11 +3,17 @@
   import {school} from '../../stores'
 
   export let period
+  export let user
 </script>
 
 <div id="container">
   <div id="row" style="font-size: 1.3em;">
-    {period.subject.name} - Clasa a {roman[period.subject.grade.gradeNumber]}-a {period.subject.grade.gradeLetter}
+    {#if user === "teacher"}
+      <!-- {period.subject.name} - Clasa a {roman[period.subject.grade.gradeNumber]}-a {period.subject.grade.gradeLetter} -->
+      {period.subject.grade.gradeNumber}{period.subject.grade.gradeLetter} - {period.subject.name}
+    {:else if user === "student"}
+      {period.subject.name}
+    {/if}
   </div>
   <div id="row">
     <div id="interval">
@@ -66,7 +72,7 @@
     font-weight: 500;
     position: relative;
 
-    width: 40%;
+    width: 50%;
     height: 100%;
     float: right;
   }
@@ -75,7 +81,7 @@
     margin: 0;
     position: absolute;
     top: 50%;
-    left: 35px;
+    left: 30px;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }

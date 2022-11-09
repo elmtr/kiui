@@ -3,23 +3,52 @@
   export let value
   export let onClick
 
+  import {loading} from '../../stores'
+
 </script>
 
-<input type="submit" {value} on:click={onClick}>
+
+{#if $loading}
+  <div id="submit">
+    <img src="img/loading.gif" alt="">
+  </div>
+{:else}
+  <div id="submit" on:click={onClick}>
+    <span>{value}</span>
+  </div>
+{/if}
 
 <style scoped>
-  input {
+  #submit {
     width: 100%;
     height: 45px;
     background: var(--darkgreen);
-    color: var(--lightgreen);
     border: none;
     border: var(--border);
     border-radius: var(--border-radius);
-    font-size: 1em;
+    position: relative;
   }
 
-  input:focus-visible {
+  #submit:focus-visible {
     border: var(--border);
+  }
+
+  #submit span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--lightgreen);
+    font-size: 1em;
+    font-family: var(--sans-serif);
+  }
+
+  #submit img {
+    width: 20px;
+    filter: var(--lightgreen-filter);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 </style>
