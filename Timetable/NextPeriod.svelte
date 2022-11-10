@@ -1,34 +1,31 @@
 <script>
   import {link} from 'svelte-spa-router'
   import { writable } from "svelte/store"
-  import {school} from '../../stores'
+  import {school, today, interval, timetable} from '../../stores'
 
   import {floatToHour} from '../../utils/utils'
 
-  export let timetable = {}
-  export let day
-  export let interval
   export let user
 
   let roman = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII"]
 
-  function findHourInterval(intervals, number) {
-    for (let intervalIndex in intervals) {
-      let interval = intervals[intervalIndex]
-      if (interval.number === number) {
-        return interval
-      }
-    }
+
+  let period = writable($timetable[$today][$interval + 1][0])
+  $: {
+    period.set($timetable[$today][$interval + 1][0])
   }
 
-  let period = writable(timetable[day][interval][0])
   let linkTo = ""
   $: {
     if ($period) {
       if (user === 'student') {
-        linkTo = $period.subject.key
+        if ($period.subject.key === "0") {
+          linkTo = "/"
+        } else {
+          linkTo = '/' + user + '/' + $period.subject.key
+        }
       } else if (user === 'teacher') {
-        linkTo = $period.subject.grade.key
+        linkTo = '/' + user + '/' + $period.subject.grade.key
       }
     }
   }
@@ -61,8 +58,8 @@
         <br>
 
         <span id="grade-interval">
-          {floatToHour(findHourInterval($school.intervals, interval).start)}-
-          {floatToHour(findHourInterval($school.intervals, interval).end)}
+          {floatToHour($school.intervals[$interval + 1].start)}-
+          {floatToHour($school.intervals[$interval + 1].end)}
         </span>
       </div>
     </div>
