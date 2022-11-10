@@ -49,9 +49,14 @@
     max-width: 400px;
     height: 95%;
     max-height: 300px;
-
     background: var(--white);
     border-radius: var(--border-radius);
+
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    border-radius: 0;
+    background: var(--offwhite);
 
     position: fixed;
 

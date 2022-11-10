@@ -20,7 +20,7 @@
     </div>
     <div id="title">
       <span>
-        Adaugă absență
+        Adaugă o absență
       </span>
     </div>
 
@@ -53,9 +53,13 @@
     width: 90%;
     max-width: 400px;
     height: 95%;
-
-    background: var(--white);
     border-radius: var(--border-radius);
+    background: var(--white);
+
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background: var(--offwhite);
 
     position: fixed;
 

@@ -76,9 +76,13 @@
     width: 90%;
     max-width: 400px;
     height: 95%;
-
     background: var(--white);
     border-radius: var(--border-radius);
+
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background: var(--offwhite);
 
     position: fixed;
 
@@ -134,6 +138,6 @@
     margin: 20px;
     font-size: 1.2em;
     font-family: var(--sans-serif);
-    text-decoration: underline;
+    /* text-decoration: underline; */
   }
 </style>
