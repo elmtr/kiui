@@ -19,7 +19,7 @@
     {/each}
   </select>
 
-  <select class="select" bind:value={month} style="width: 50%; max-width: 100px; margin-left: 10px;">
+  <select class="select" bind:value={month} style="width: 50%; max-width: 130px; margin-left: 10px;">
     {#each monthsInt as item} 
       <option class="option"  value={item + 1}>
         {months[item + 1]}
@@ -53,6 +53,7 @@
     border-radius: var(--border-radius);
     border: var(--border);
     font-family: var(--sans-serif);
+    font-size: 1.2em;
 
     margin-left: 10px;
 
