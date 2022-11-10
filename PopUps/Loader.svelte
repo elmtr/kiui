@@ -12,9 +12,10 @@
   #shadow {
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: var(--offwhite);
     position: fixed;
     top: 0;
+    z-index: 10;
   }
 
   #shadow img {

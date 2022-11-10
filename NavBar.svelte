@@ -64,7 +64,7 @@
     left: 50%;
     transform: translateX(-50%);
     /* border-radius: var(--border-radius); */
-    z-index: 10;
+    z-index: 8;
     margin: auto;
   }
 
