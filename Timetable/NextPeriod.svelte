@@ -39,7 +39,8 @@
     <div id="container">
       <div id="title">
         <span id="title-content">
-          <span id="title-content-filler">Ora următoare:</span> <span id="subject-name">{$period.subject.name}</span>
+          <span id="title-content-filler">Ora următoare:</span> 
+          <br><span id="subject-name">{$period.subject.name}</span>
         </span>
       </div>
 
@@ -51,10 +52,12 @@
       </div>
 
       <div id="grade">
-        <span id="grade-grade">
-          Clasa  
-          <span style="font-weight: 600">{roman[$period.subject.grade.gradeNumber]}{$period.subject.grade.gradeLetter.toUpperCase()}</span>
-        </span>
+        {#if user === "teacher"}
+          <span id="grade-grade">
+            Clasa  
+            <span style="font-weight: 600">{roman[$period.subject.grade.gradeNumber]}{$period.subject.grade.gradeLetter.toUpperCase()}</span>
+          </span>
+        {/if}
         <br>
 
         <span id="grade-interval">
@@ -69,10 +72,10 @@
 <style scoped>
   #container {
     width: var(--width);
-    height: 90px;
+    height: 120px;
 
     margin: auto;
-    padding-top: 15px;
+    padding-top: 10px;
 
     background: var(--white);
 
@@ -84,7 +87,7 @@
 
   #title {
     color: var(--black);
-    height: 20%;
+    height: 40%;
     position: relative;
     font-weight: 600;
   }

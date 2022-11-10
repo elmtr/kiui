@@ -8,7 +8,7 @@
   export let timetable = {}
   export let day
   export let interval
-  export let user
+  export let user = "teacher"
 
   let progress = writable(70)
 
@@ -73,7 +73,8 @@
   <div id="container">
     <div id="title">
       <span id="title-content">
-        <span id="title-content-filler">Ora curentă:</span> <span id="subject-name">{$period.subject.name}</span>
+        <span id="title-content-filler">Ora curentă:</span> 
+        <br><span id="subject-name">{$period.subject.name}</span>
       </span>
     </div>
 
@@ -85,10 +86,12 @@
     </div>
 
     <div id="grade">
-      <span id="grade-grade">
-        Clasa  
-        <span style="font-weight: 600">{roman[$period.subject.grade.gradeNumber]}{$period.subject.grade.gradeLetter.toUpperCase()}</span>
-      </span>
+      {#if user === "teacher"}
+        <span id="grade-grade">
+          Clasa  
+          <span style="font-weight: 600">{roman[$period.subject.grade.gradeNumber]}{$period.subject.grade.gradeLetter.toUpperCase()}</span>
+        </span>
+      {/if}
       <br>
 
       <span id="grade-interval">
@@ -110,11 +113,11 @@
 <style scoped>
   #container {
     width: var(--width);
-    height: 120px;
+    height: 130px;
 
     margin: auto;
     margin-top: 10px;
-    padding-top: 15px;
+    padding-top: 12px;
 
     background: var(--darkgreen);
 
@@ -126,7 +129,7 @@
 
   #title {
     color: var(--lightgreen);
-    height: 20%;
+    height: 35%;
     position: relative;
     font-weight: 600;
   }
@@ -139,6 +142,8 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);  
     font-size: 1.25em;
+    margin-bottom: 10px;
+
   }
 
   #title-content-filler{
@@ -147,6 +152,7 @@
 
   #subject-name {
     font-family: var(--serif);
+    margin-top: 10px;
   }
 
   #room {
@@ -180,7 +186,7 @@
 
   #grade {
     position: absolute;
-    bottom: 15px;
+    bottom: 20px;
     left: 20px;
     font-family: var(--sans-serif);
     color: var(--lightgreen);
