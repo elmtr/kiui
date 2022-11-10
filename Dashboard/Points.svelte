@@ -4,18 +4,10 @@
   export let studentKey
   export let mod
 
-  import {token} from '../../stores'
+  import {token, pointsValue} from '../../stores'
   import {writable} from 'svelte/store'
   import {fetchPoints} from '../../fetch/fetch'
 
-  let pointsValue = writable(0);
-
-  async function getPoints() {
-    let data = await fetchPoints($token, subjectKey, studentKey)
-    pointsValue.set(data.value)
-
-    return data
-  }
 
   async function decreasePoints(key) {
     await updateDecreasePoints($token, key)
@@ -34,7 +26,7 @@
 
 </script>
 
-{#await getPoints() then points}
+{#await fetchPoints($token, subjectKey, studentKey) then points}
   <div id="container">
     <div id="points">
       Puncte: <span>{$pointsValue}</span>
