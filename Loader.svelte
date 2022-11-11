@@ -19,7 +19,7 @@
   }
 
   #loader img {
-    width: 25px;
+    width: 20px;
     position: relative;
     top: 50%;
     left: 50%;
