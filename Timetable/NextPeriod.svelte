@@ -72,6 +72,7 @@
     height: 120px;
 
     margin: auto;
+    margin-bottom: 15px;
     padding-top: 10px;
 
     background: var(--white);
