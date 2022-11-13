@@ -68,9 +68,9 @@
     <div id="keypad-container">
       <KeyPad length={4} bind:value={passcode} onClick={async () => {
         await loginUpdate($info.phone, passcode)
-        if ($errorMessage === "") {
-          $showUpdate = false
-        }
+        // if ($errorMessage === "") {
+        //   $showUpdate = false
+        // }
         passcode = ""
       }}/>
     </div>
