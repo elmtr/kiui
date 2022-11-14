@@ -32,7 +32,7 @@
 </script>
 
 {#if $period}
-  <a href={`/${user}/${linkTo}`} use:link>
+  <a href={linkTo} use:link>
     <div id="container">
       <div id="title">
         <span id="title-content">
