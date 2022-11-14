@@ -18,73 +18,73 @@
 
 <div class="row">
   <div class="cell">
-    <div class="key" on:click={() => {addDigit(1)}}>
+    <button class="key" on:click={() => {addDigit(1)}}>
       <div>1</div>
-    </div>
+    </button>
   </div>
   <div class="cell">
-    <div class="key" on:click={() => {addDigit(2)}}>
+    <button class="key" on:click={() => {addDigit(2)}}>
       <div>2</div>
-    </div>
+    </button>
   </div>
   <div class="cell">
-    <div class="key" on:click={() => {addDigit(3)}}>
+    <button class="key" on:click={() => {addDigit(3)}}>
       <div>3</div>
-    </div>
+    </button>
   </div>
 </div> 
 <div class="row">
   <div class="cell">
-    <div class="key" on:click={() => {addDigit(4)}}>
+    <button class="key" on:click={() => {addDigit(4)}}>
       <div>4</div>
-    </div>
+    </button>
   </div>
   <div class="cell">
-    <div class="key" on:click={() => {addDigit(5)}}>
+    <button class="key" on:click={() => {addDigit(5)}}>
       <div>5</div>
-    </div>
+    </button>
   </div>
   <div class="cell">
-    <div class="key" on:click={() => {addDigit(6)}}>
+    <button class="key" on:click={() => {addDigit(6)}}>
       <div>6</div>
-    </div>
+    </button>
   </div>
 </div> 
 <div class="row">
   <div class="cell">
-    <div class="key" on:click={() => {addDigit(7)}}>
+    <button class="key" on:click={() => {addDigit(7)}}>
       <div>7</div>
-    </div>
+    </button>
   </div>
   <div class="cell">
-    <div class="key" on:click={() => {addDigit(8)}}>
+    <button class="key" on:click={() => {addDigit(8)}}>
       <div>8</div>
-    </div>
+    </button>
   </div>
   <div class="cell">
-    <div class="key" on:click={() => {addDigit(9)}}>
+    <button class="key" on:click={() => {addDigit(9)}}>
       <div>9</div>
-    </div>
+    </button>
   </div>
 </div> 
 <div class="row">
   <div class="cell">
-    <div class="key" style="color: var(--lightgreen);" on:click={() => {removeDigit()}}>
+    <button class="key" style="color: var(--lightgreen);" on:click={() => {removeDigit()}}>
       <div>
         <img src="/img/backspace.svg" alt="" style="width: var(" >
       </div>
-    </div>
+    </button>
   </div>
   <div class="cell">
-    <div class="key" on:click={() => {addDigit(0)}}>
+    <button class="key" on:click={() => {addDigit(0)}}>
       <div>0</div>
-    </div>
+    </button>
   </div>
   <div class="cell">
     {#if okButton}
-      <div class="key" style="color: var(--lightgreen);" on:click={onClick}>
+      <button class="key" style="color: var(--lightgreen);" on:click={onClick}>
         <div style="color: var(--darkgreen);">ok</div>
-      </div>
+      </button>
     {/if}
   </div>
 </div> 
@@ -102,6 +102,7 @@
 
   .cell {
     flex: 33%;
+    /* background: blue; */
   }
 
   .key {
@@ -110,6 +111,14 @@
     height: 60px;
 
     position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-radius: 300px;
+
+    outline: none;
+    border: none;
+    background: var(--offwhite);
   }
 
   .key div {
@@ -122,6 +131,7 @@
     margin: 0;
     position: absolute;
     top: 50%;
+    left: 0;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
