@@ -39,7 +39,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 3;
+    z-index: 7;
     margin: auto;
   }
 
@@ -62,7 +62,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 4;
+    z-index: 8;
   }
 
   #close {
