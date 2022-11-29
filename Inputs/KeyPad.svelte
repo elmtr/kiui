@@ -1,12 +1,15 @@
 <script>
   export let value
   export let length
-  export let okButton = true
   export let onClick
   
-  function addDigit(n) {
+  async function addDigit(n) {
     if (value.length < length) {
       value += n
+    }
+
+    if (value.length === length) {
+      await onClick()
     }
   }
 
@@ -18,74 +21,80 @@
 
 <div class="row">
   <div class="cell">
-    <button class="key" on:click={() => {addDigit(1)}}>
+    <button class="key" on:click={async () => {await addDigit(1)}}>
       <div>1</div>
     </button>
   </div>
   <div class="cell">
-    <button class="key" on:click={() => {addDigit(2)}}>
+    <button class="key" on:click={async () => {await addDigit(2)}}>
       <div>2</div>
     </button>
   </div>
   <div class="cell">
-    <button class="key" on:click={() => {addDigit(3)}}>
+    <button class="key" on:click={async () => {await addDigit(3)}}>
       <div>3</div>
     </button>
   </div>
 </div> 
 <div class="row">
   <div class="cell">
-    <button class="key" on:click={() => {addDigit(4)}}>
+    <button class="key" on:click={async () => {await addDigit(4)}}>
       <div>4</div>
     </button>
   </div>
   <div class="cell">
-    <button class="key" on:click={() => {addDigit(5)}}>
+    <button class="key" on:click={async () => {await addDigit(5)}}>
       <div>5</div>
     </button>
   </div>
   <div class="cell">
-    <button class="key" on:click={() => {addDigit(6)}}>
+    <button class="key" on:click={async () => {await addDigit(6)}}>
       <div>6</div>
     </button>
   </div>
 </div> 
 <div class="row">
   <div class="cell">
-    <button class="key" on:click={() => {addDigit(7)}}>
+    <button class="key" on:click={async () => {await addDigit(7)}}>
       <div>7</div>
     </button>
   </div>
   <div class="cell">
-    <button class="key" on:click={() => {addDigit(8)}}>
+    <button class="key" on:click={async () => {await addDigit(8)}}>
       <div>8</div>
     </button>
   </div>
   <div class="cell">
-    <button class="key" on:click={() => {addDigit(9)}}>
+    <button class="key" on:click={async () => {await addDigit(9)}}>
       <div>9</div>
     </button>
   </div>
 </div> 
 <div class="row">
   <div class="cell">
+    <!-- <button class="key" style="color: var(--lightgreen);" on:click={() => {removeDigit()}}>
+      <div>
+        <img src="/img/backspace.svg" alt="" style="width: var(" >
+      </div>
+    </button> -->
+  </div>
+  <div class="cell">
+    <button class="key" on:click={async () => {await addDigit(0)}}>
+      <div>0</div>
+    </button>
+  </div>
+  <div class="cell">
+    <!-- {#if okButton}
+      <button class="key" style="color: var(--lightgreen);" on:click={onClick}>
+        <div style="color: var(--darkgreen);">ok</div>
+      </button>
+    {/if} -->
+
     <button class="key" style="color: var(--lightgreen);" on:click={() => {removeDigit()}}>
       <div>
         <img src="/img/backspace.svg" alt="" style="width: var(" >
       </div>
     </button>
-  </div>
-  <div class="cell">
-    <button class="key" on:click={() => {addDigit(0)}}>
-      <div>0</div>
-    </button>
-  </div>
-  <div class="cell">
-    {#if okButton}
-      <button class="key" style="color: var(--lightgreen);" on:click={onClick}>
-        <div style="color: var(--darkgreen);">ok</div>
-      </button>
-    {/if}
   </div>
 </div> 
 
