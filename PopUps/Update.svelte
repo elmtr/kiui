@@ -6,6 +6,7 @@
     
   // kiui
   import KeyPad from '../../kiui/Inputs/KeyPad.svelte'
+  // import KeyPadOS from '../../kiui/Inputs/KeyPadOS.svelte'
   import Heading from '../../kiui/Heading.svelte'
   import ErrorMessage from '../../kiui/ErrorMessage.svelte'
   import Loading from '../../kiui/Loading.svelte'
@@ -70,7 +71,15 @@
         await loginUpdate($info.phone, passcode)
         passcode = ""
       }}/>
+      <!-- <KeyPadOS length={4} okButton={false} bind:value={passcode} onClick={async () => {
+        await loginUpdate($info.phone, passcode)
+        passcode = ""
+      }}/> -->
     </div>
+
+    <!-- <div id="prompt">
+      Apăsați pe ecran pentru tastatură
+    </div> -->
   </div>
 {/if}
 
@@ -86,6 +95,7 @@
 
   #keypad-container {
     width: var(--container);
+    /* height: 100vh; */
     height: 350px;
     margin: auto;
     position: fixed; 
@@ -114,6 +124,8 @@
     width: 20%;
     height: 100%;
     margin-left: 40%;
+    /* position: fixed;
+    top: 20vh; */
 
     display: flex;
     flex-wrap: wrap;
@@ -141,4 +153,13 @@
   .digit-on {
     background: var(--darkgreen);
   }
+
+  /* #prompt {
+    width: 100%;
+    position: fixed;
+    bottom: 15px;
+    color: var(--darkgreen);
+    font-family: var(--sans-serif);
+    text-align: center;
+  } */
 </style>
