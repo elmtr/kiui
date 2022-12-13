@@ -6,7 +6,7 @@
     
   // kiui
   import KeyPad from '../../kiui/Inputs/KeyPad.svelte'
-  // import KeyPadOS from '../../kiui/Inputs/KeyPadOS.svelte'
+  import KeyPadOS from '../../kiui/Inputs/KeyPadOS.svelte'
   import Heading from '../../kiui/Heading.svelte'
   import ErrorMessage from '../../kiui/ErrorMessage.svelte'
   import Loading from '../../kiui/Loading.svelte'
@@ -61,6 +61,7 @@
       <div id="element-container">
         <ErrorMessage />
       </div>
+      <!-- <div style="height: 10vh;"></div> -->
       <Loading />
     </div><br>
 
