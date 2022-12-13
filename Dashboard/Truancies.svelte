@@ -43,7 +43,7 @@
           {calcNumberTruancies()}
           {#each $truancies as truancy}
             <li id="element">
-              {truancy.dateDay} {months[truancy.dateMonth]}
+              absență pe {truancy.dateDay} {months[truancy.dateMonth]}
               {#if truancy.motivated} 
                 <div class="status">
                   motivată

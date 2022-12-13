@@ -26,7 +26,7 @@
         <l>
           {#each $draftMarks as draftMark}
             <li id="element">
-              {draftMark.value} pe {draftMark.dateDay} {months[draftMark.dateMonth]}
+              nota ciornă {draftMark.value} pe {draftMark.dateDay} {months[draftMark.dateMonth]}
               {#if mod}
                 <span id="edit" on:click={() => {
                   $showModifyDraftMark = true

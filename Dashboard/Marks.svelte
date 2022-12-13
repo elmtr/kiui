@@ -26,7 +26,7 @@
           {calcAverage($marks)}
           {#each $marks as mark}
             <li id="element">
-              {mark.value} pe {mark.dateDay} {months[mark.dateMonth]}
+              nota {mark.value} pe {mark.dateDay} {months[mark.dateMonth]}
             </li>
           {/each}
         </l>
